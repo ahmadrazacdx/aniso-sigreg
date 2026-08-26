@@ -1,0 +1,6 @@
+torch>=2.0.0
+numpy>=2.0.0
+scipy>=1.10.0
+matplotlib>=3.9.0
+loguru>=0.7.2
+git+https://github.com/galilai-group/lejepa.git

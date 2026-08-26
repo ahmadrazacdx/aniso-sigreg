@@ -16,8 +16,10 @@ def set_seeds(seed=42):
 
 def train_emb(N=1000, K=512, M=16, steps=10000, lr=0.01, seed=42, t_max=5.0, n_points=17, resample=True, device="cuda"):
     set_seeds(seed)
+
     Z = torch.randn(N, K, device=device, dtype=torch.float32)
-    Z[:, 1] = Z[:, 0].sign() * torch.randn(N, device=device, dtype=torch.float32).abs()
+    sign = torch.randint(0, 2, (N,), device=device) * 2 - 1
+    Z[:, 1] = sign * Z[:, 0].abs()
     Z = torch.nn.Parameter(Z)
 
     if resample:
